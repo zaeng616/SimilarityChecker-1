@@ -13,5 +13,4 @@ public:
 	int CalculatePartialLength(int length_a, int length_b) {
 		return (1 - ((double)std::abs(length_a-length_b) / std::min(length_a, length_b))) * MAX_LENGTH_SIMILARITY;
 	}
-
 };
