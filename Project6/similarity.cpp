@@ -6,6 +6,8 @@ public:
 	int GetLengthSimilarity(std::string a, std::string b) {
 		if (a.length() == b.length())
 			return MAX_LENGTH_SIMILARITY;
+		if (a.length() > b.length() * 2 || a.length() * 2 < b.length())
+			return 0;
 		return CalculatePartialLength(a.length(), b.length());
 	}
 	int CalculatePartialLength(int length_a, int length_b) {
