@@ -1,13 +1,15 @@
 #include <iostream>
 #include "gmock/gmock.h"
 #include "similarity.cpp"
-TEST(SimilarityTest, TestLength) {
-	Similiarity s;
-	EXPECT_EQ(60, s.GetLengthSimilarity("ASD", "DSA"));
+class SimilarityFixture: public testing::Test{
+public:
+	Similiarity similarity;
+};
+TEST_F(SimilarityFixture, TestLength) {
+	EXPECT_EQ(60, similarity.GetLengthSimilarity("ASD", "DSA"));
 }
-TEST(SimiliarityTest, TestLengthFail) {
-	Similiarity s;
-	EXPECT_EQ(0, s.GetLengthSimilarity("A", "BB"));
+TEST_F(SimilarityFixture, TestLengthFail) {
+	EXPECT_EQ(0, similarity.GetLengthSimilarity("A", "BB"));
 }
 int main() {
 	testing::InitGoogleMock();
