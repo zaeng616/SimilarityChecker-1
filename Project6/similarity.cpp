@@ -10,6 +10,23 @@ public:
 			return 0;
 		return CalculatePartialLength(a.length(), b.length());
 	}
+	int GetAlphaSImilarity(std::string a, std::string b) {
+		int i, j;
+		int sameCnt = 0;
+		for (i = 0; i < a.length(); i++) {
+			for (j = 0; j < b.length(); j++) {
+				if (a[i] == b[j])
+					break;
+			}
+			if (j != b.length())
+				sameCnt++;
+		}
+		if (sameCnt == a.length())
+			return 40;
+		return 0;
+	}
+
+private:
 	int CalculatePartialLength(int length_a, int length_b) {
 		return (1 - ((double)std::abs(length_a-length_b) / std::min(length_a, length_b))) * MAX_LENGTH_SIMILARITY;
 	}
