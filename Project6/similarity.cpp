@@ -13,17 +13,26 @@ public:
 	int GetAlphaSImilarity(const std::string& a, const std::string& b) {
 		int i, j;
 		int sameCnt = 0;
+		int totalCnt = 0;
+		//total cnt
+		bool total_arr[26] = {};
+		bool same_arr[26] = {};
+		for (int i = 0; i < a.length(); i++)
+			total_arr[a[i] - 'A'] = true;
+		for (int i = 0; i < b.length(); i++)
+			total_arr[b[i] - 'A'] = true;
+		for (int i = 0; i < sizeof(total_arr) / sizeof(bool); i++)
+			if (total_arr[i]) totalCnt++;
 		for (i = 0; i < a.length(); i++) {
-			for (j = 0; j < b.length(); j++) {
-				if (a[i] == b[j])
+			for (j = 0; j < b.length(); j++)
+				if (a[i] == b[j]) {
+					same_arr[a[i] - 'A'] = true;
 					break;
-			}
-			if (j != b.length())
-				sameCnt++;
+				}
 		}
-		if (sameCnt == a.length())
-			return 40;
-		return 0;
+		for (int i = 0; i < sizeof(same_arr) / sizeof(bool); i++)
+			if (same_arr[i]) sameCnt++;
+		return (double)sameCnt/totalCnt*40;
 	}
 
 private:

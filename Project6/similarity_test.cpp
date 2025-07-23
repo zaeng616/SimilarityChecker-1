@@ -26,6 +26,10 @@ TEST_F(SimilarityFixture, TestSameAlpha) {
 	EXPECT_EQ(40, similarity.GetAlphaSImilarity("AAABB", "BA"));
 }
 
+TEST_F(SimilarityFixture, TestDifferentAlpha) {
+	EXPECT_EQ(20, similarity.GetAlphaSImilarity("A", "DA"));
+	EXPECT_EQ(20, similarity.GetAlphaSImilarity("AAABBD", "BAC"));
+}
 int main() {
 	testing::InitGoogleMock();
 	return RUN_ALL_TESTS();
