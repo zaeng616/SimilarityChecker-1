@@ -4,9 +4,12 @@ class Similiarity {
 	const int MAX_LENGTH_SIMILARITY = 60;
 public:
 	int GetLengthSimilarity(std::string a, std::string b) {
-		int short_length = a.length() > b.length() ? b.length() : a.length();
-		int gap = a.length() - b.length();
-		return (1 - ((double)std::abs(gap) / short_length)) * 60;
+		if (a.length() == b.length())
+			return MAX_LENGTH_SIMILARITY;
+		return CalculatePartialLength(a.length(), b.length());
+	}
+	int CalculatePartialLength(int length_a, int length_b) {
+		return (1 - ((double)std::abs(length_a-length_b) / std::min(length_a, length_b))) * MAX_LENGTH_SIMILARITY;
 	}
 
 };
