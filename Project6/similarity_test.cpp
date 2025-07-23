@@ -14,6 +14,9 @@ TEST_F(SimilarityFixture, TestLengthFail) {
 TEST_F(SimilarityFixture, TestLengthPartial) {
 	EXPECT_EQ(20, similarity.GetLengthSimilarity("AAABB", "BAA"));
 }
+TEST_F(SimilarityFixture, TestLengthPartial2) {
+	EXPECT_EQ(30, similarity.GetLengthSimilarity("AA", "AAE"));
+}
 int main() {
 	testing::InitGoogleMock();
 	return RUN_ALL_TESTS();
